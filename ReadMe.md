@@ -58,7 +58,7 @@ Developed a FastAPI-based YouTube transcript summarization service using LangCha
 
 ## FOLDER STRUCTURE
 
-    project/
+     project/
             |── src/
             |   |── main.py
             |   |── chains.py
@@ -68,6 +68,7 @@ Developed a FastAPI-based YouTube transcript summarization service using LangCha
             |
             |── Testing/
             |   |── SetConceptandConventionsSets#1Class11MathsCh.txt
+            |   |── url.txt
             |
             |── .env
             |
@@ -79,8 +80,8 @@ Developed a FastAPI-based YouTube transcript summarization service using LangCha
 ## Installation & Setup for the project
 
 ```python
-git clone Youtube Transript Summarizer (FastAPI + LangChain + Redis)
-cd project-name
+git clone Youtube-Transript-Summarizer-FastAPI-LangChain-Redis-
+cd Youtube-Transript-Summarizer
 
 pip install -r requirements.txt
 
@@ -150,7 +151,6 @@ PONG
 | Method | Endpoint | Parameters| Description |
 |---|---|---|---|
 |POST| `/youtube/`| `Optional`: **Body (form-data):** `file` (TXT) / **Query:** `url`| Upload a transcript text file or the url of the youtube video to get summary of the video.|
-|---|---|---|---|
 
 ---
 
@@ -162,7 +162,20 @@ PONG
 
 ### Response
 ```json
-
+{
+  "response": {
+    "video_title": "Concept of Sets in Mathematics",
+    "overall_duration": "Not specified",
+    "one_sentence_summary": "The video explains the concept of sets in mathematics, including examples, notation, and operations on sets.",
+    "overall_summary": "A set is a well-defined collection of objects, which can be represented using curly brackets and can have a fixed or infinite number of elements. Examples of sets include players of the Indian cricket team, rivers of India, students of a school, and members of a family. The video also covers concepts such as equality between sets, subsets, proper subsets, supersets, single-turn sets, power sets, and universal sets. Operations on sets, including union, intersection, difference, and complement of a set are also discussed.",
+    "highlight": "The video provides examples of sets and explains how to determine whether a particular element belongs to a set.",
+    "key_takeaway": [
+      "A set is a well-defined collection of objects",
+      "Examples of sets include players of the Indian cricket team, rivers of India, students of a school, and members of a family",
+      "Operations on sets include union, intersection, difference, and complement of a set"
+    ]
+  }
+}
 ```      
 
 ---
@@ -173,28 +186,30 @@ PONG
 ### 2. FAST API(SWAGGER DOCS):
 ![alt text](/images/image1.png)
 ![alt text](/images/image2.png)
-![alt text](/images/image3.png)
 
 ### 3. Swagger UI POST Tryout:
+#### URL
+![alt text](/images/image3.png)
 ![alt text](/images/image4.png)
+#### TXT File
 ![alt text](/images/image5.png)
-
-### 4. Swagger UI GET Tryout:
 ![alt text](/images/image6.png)
-![alt text](/images/image7.png)
 
 ### 5. Postman POST request:
-![alt text](/images/image8.png)
+#### URL Cache testing
+![alt text](/images/image7.png)
 
-### 6. Postman GET request:
-![alt text](/images/image9.png)
+#### TXT Cache testing 
+![alt text](/images/image8.png)
        
 ---
 
 ## Possible Improvements
-- Add persistent chache memory 
-- Improve chunking, tokens and API calls
-- Different LLM.
+- Add persistent caching to reduce repeated LLM calls
+
+- Optimize chunking, token usage, and API efficiency
+
+- Evaluate alternative LLMs for higher accuracy
 ---
 ## License
 This project is licensed under the MIT License.

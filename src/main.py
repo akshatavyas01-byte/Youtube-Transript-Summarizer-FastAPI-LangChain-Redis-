@@ -35,9 +35,9 @@ async def trascriptgetter(
             transcript_format=TranscriptFormat.CHUNKS,
             chunk_size_seconds=180)
             try:
-                print("Started loading")
+                #print("Started loading")
                 doc= await  asyncio.wait_for(asyncio.to_thread(loader.load), timeout=15)
-                print("loded")
+                #print("loded")
                 chunk_size=len(doc)
                 content=chunked_content(doc,chunk_size)
                 #print("Done content")
@@ -45,7 +45,7 @@ async def trascriptgetter(
                 #print("Done summary")
                 response=full_summary(summaries)
                 #print("doneFull summary")
-                r.setex(youtube_url,60,json.dumps(response.__dict__))
+                r.setex(youtube_url,120,json.dumps(response.__dict__))
                 return {"response":response}
             except  asyncio.TimeoutError:
                 print("Time out Error")
@@ -74,7 +74,7 @@ async def trascriptgetter(
                         #print("Done summary")
                         response=full_summary(summaries)
                         #print("doneFull summary")
-                        r.setex(name,60,json.dumps(response.__dict__))
+                        r.setex(name,120,json.dumps(response.__dict__))
                         return {"response":response}
                     except asyncio.TimeoutError:
                         return {"error":"Txt doc not loaded"}
