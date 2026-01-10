@@ -35,16 +35,11 @@ async def trascriptgetter(
             transcript_format=TranscriptFormat.CHUNKS,
             chunk_size_seconds=180)
             try:
-                #print("Started loading")
                 doc= await  asyncio.wait_for(asyncio.to_thread(loader.load), timeout=15)
-                #print("loded")
                 chunk_size=len(doc)
                 content=chunked_content(doc,chunk_size)
-                #print("Done content")
                 summaries=chunks_summaries(content)
-                #print("Done summary")
                 response=full_summary(summaries)
-                #print("doneFull summary")
                 r.setex(youtube_url,120,json.dumps(response.__dict__))
                 return {"response":response}
             except  asyncio.TimeoutError:
@@ -69,11 +64,8 @@ async def trascriptgetter(
                         textchunks=text_chunks(text)
                         chunk_size=len(textchunks)
                         grouped_chunks=chunks_group(textchunks,chunk_size)
-                        #print("Done content")
                         summaries=chunks_summaries(grouped_chunks)
-                        #print("Done summary")
                         response=full_summary(summaries)
-                        #print("doneFull summary")
                         r.setex(name,120,json.dumps(response.__dict__))
                         return {"response":response}
                     except asyncio.TimeoutError:
