@@ -4,7 +4,7 @@ Developed a FastAPI-based YouTube transcript summarization service using LangCha
 
 ---
 
-## FESTURES
+## FEATURES
 ### 1. App Features:
     - Accepts a YouTube video URL or raw text transcript via a POST API endpoint  
     - Automatically extracts and processes the YouTube transcript  
@@ -30,13 +30,13 @@ Developed a FastAPI-based YouTube transcript summarization service using LangCha
 ### 6. FAST API
     - POST endpoints
     - `UploadFile` handling
-    - Optional (typping)
+    - Optional (typing)
     - Path and Query parameters
     - Auto-generated API documentation (Swagger UI)
 
 ### 7. Backend utilites
     - `tempfile` for temporary text storage
-    - Pydantic Models for data validation and strutured responses
+    - Pydantic Models for data validation and structured responses
 
 ### 8. Testing
     - POSTMAN
